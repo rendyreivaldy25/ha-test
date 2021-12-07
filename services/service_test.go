@@ -172,7 +172,7 @@ func TestGetLocNotNumberValueX(t *testing.T) {
 		float64(1),
 	)
 	result := fmt.Sprintf("%s", error)
-	expected := "Error parsing X value to Number"
+	expected := "error parsing X value to number"
 	if result != expected {
 		t.Errorf("Expected : %+v, got : %+v", expected, result)
 	}
@@ -190,7 +190,7 @@ func TestGetLocNotNumberValueY(t *testing.T) {
 		float64(1),
 	)
 	result := fmt.Sprintf("%s", error)
-	expected := "Error parsing Y value to Number"
+	expected := "error parsing Y value to number"
 	if result != expected {
 		t.Errorf("Expected : %+v, got : %+v", expected, result)
 	}
@@ -208,7 +208,7 @@ func TestGetLocNotNumberValueZ(t *testing.T) {
 		float64(1),
 	)
 	result := fmt.Sprintf("%s", error)
-	expected := "Error parsing Z value to Number"
+	expected := "error parsing Z value to number"
 	if result != expected {
 		t.Errorf("Expected : %+v, got : %+v", expected, result)
 	}
@@ -226,7 +226,7 @@ func TestGetLocNotNumberValueVel(t *testing.T) {
 		float64(1),
 	)
 	result := fmt.Sprintf("%s", error)
-	expected := "Error parsing Vel value to Number"
+	expected := "error parsing Vel value to number"
 	if result != expected {
 		t.Errorf("Expected : %+v, got : %+v", expected, result)
 	}

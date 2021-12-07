@@ -15,21 +15,21 @@ func NewHaService() _hAModels.HaServiceInterface {
 }
 
 func (a *HaService) GetLoc(dnsRequest *_hAModels.DNSRequest, sectorId float64) (float64, error) {
-	xVal, err := strconv.ParseFloat(dnsRequest.X, 8)
+	xVal, err := strconv.ParseFloat(dnsRequest.X, 64)
 	if err != nil {
-		return 0, errors.New("Error parsing X value to Number")
+		return 0, errors.New("error parsing X value to number")
 	}
-	yVal, err := strconv.ParseFloat(dnsRequest.Y, 8)
+	yVal, err := strconv.ParseFloat(dnsRequest.Y, 64)
 	if err != nil {
-		return 0, errors.New("Error parsing Y value to Number")
+		return 0, errors.New("error parsing Y value to number")
 	}
-	zVal, err := strconv.ParseFloat(dnsRequest.Z, 8)
+	zVal, err := strconv.ParseFloat(dnsRequest.Z, 64)
 	if err != nil {
-		return 0, errors.New("Error parsing Z value to Number")
+		return 0, errors.New("error parsing Z value to number")
 	}
-	velVal, err := strconv.ParseFloat(dnsRequest.Vel, 8)
+	velVal, err := strconv.ParseFloat(dnsRequest.Vel, 64)
 	if err != nil {
-		return 0, errors.New("Error parsing Vel value to Number")
+		return 0, errors.New("error parsing Vel value to number")
 	}
 	loc := xVal*sectorId + yVal*sectorId + zVal*sectorId + velVal
 	return math.Round(loc*100) / 100, nil
