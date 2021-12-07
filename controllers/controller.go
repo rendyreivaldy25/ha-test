@@ -45,7 +45,7 @@ func (hac *HaController) getLoc(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			jsonData, _ = json.Marshal(_haModel.ErrorResponse{
 				Status:  false,
-				Message: fmt.Sprintf("Error ! : %V", err),
+				Message: fmt.Sprintf("Error ! : %s", err),
 			})
 		} else {
 			jsonData, _ = json.Marshal(_haModel.DNSResponse{
@@ -55,5 +55,5 @@ func (hac *HaController) getLoc(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(jsonData)
-	fmt.Printf("getLoc -> parameter : %+v, response : %+v", dnsRequest, string(jsonData))
+	fmt.Printf("getLoc -> parameter : %+v, response : %+v\n", dnsRequest, string(jsonData))
 }

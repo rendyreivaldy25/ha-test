@@ -8,7 +8,7 @@ import (
 )
 
 func GetConfig() _haModel.Config {
-	file, _ := os.Open("./config.json")
+	file, _ := os.Open("./configs/config.json")
 	defer file.Close()
 	decoder := json.NewDecoder(file)
 	configuration := _haModel.Config{}
