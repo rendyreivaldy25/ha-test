@@ -3,7 +3,8 @@ Space exploration is underway and mostly done by private companies. You joined E
 * each observed sector of the galaxy has unique numeric SectorID assigned to it
 * each sector will have at least one DNS deployed
 * each sector has different number of drones deployed at any given moment
-* it’s future, but not that far, so drones will still use JSON REST API     
+* it’s future, but not that far, so drones will still use JSON REST API    
+     
 DNS should be designed with following constraints in mind
 * SectorID can be considered constant (it won’t change during runtime)
 * DNS request example:
@@ -30,4 +31,4 @@ DNS should be designed with following constraints in mind
 # How To Run Unit Test
 ```go test . -v```
 # Questions 
-For the added questions that needs written answer, I already created it in file named `QUESTIONS.txt` located in the root of the project.
+For the additional questions that needs written answer, I already created a file named `QUESTIONS.txt` located in the root of the project contains my answer.
