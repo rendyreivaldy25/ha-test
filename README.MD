@@ -4,28 +4,27 @@ Space exploration is underway and mostly done by private companies. You joined E
 * each sector will have at least one DNS deployed
 * each sector has different number of drones deployed at any given moment
 * it’s future, but not that far, so drones will still use JSON REST API
-<br>
-DNS should be designed with following constraints in mind:
+DNS should be designed with following constraints in mind
 * SectorID can be considered constant (it won’t change during runtime)
 * DNS request example:
-    ```
-    {
-        // x, y, z are coords, vel is velocity
-        // (values sent as strings, but must be treated as floating point number)
-        "x": "123.12",
-        "y": "456.56",
-        "z": "789.89",
-        "vel": "20.0",
-    }
-    ```
+```javascript
+{
+    // x, y, z are coords, vel is velocity
+    // (values sent as strings, but must be treated as floating point number)
+    "x": "123.12",
+    "y": "456.56",
+    "z": "789.89",
+    "vel": "20.0",
+}
+```
 * Complex math needed to serve a response:
-    ```loc = x*SectorID + y*SectorID + z*SectorID + vel```
+```loc = x*SectorID + y*SectorID + z*SectorID + vel```
 * DNS response example:
-    ```
-    {
-        "loc": 1389.57,
-    }
-    ```
+```javascript
+{
+    "loc": 1389.57,
+}
+```
 # How To Run The Project
 ```go run .```
 # How To Run Unit Test
