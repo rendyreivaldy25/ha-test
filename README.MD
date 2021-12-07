@@ -56,6 +56,16 @@ With this method, we can make the config interchangeable in the CI/CD process. S
 # How To Run Unit Test
 ```$ go test ./... -v```
 # Routes Available
-```/ (POST) -> get the location data```
+* ```/ (POST) -> get the location data```
+```shell
+curl --location --request POST 'http://localhost:10000' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "x" : "123.23",
+    "y": "456.45",
+    "z" : "789.89",
+    "vel" : "20"
+}'
+```
 # Questions 
 For the additional questions that needs written answer, I already created a file named `QUESTIONS.txt` located in the root of the project contains my answer.
