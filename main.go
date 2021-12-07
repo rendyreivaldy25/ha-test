@@ -1,20 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-
 	_haController "ha-test/controllers"
 	_haService "ha-test/services"
+	_haUtils "ha-test/utils"
 )
 
 func main() {
+	config := _haUtils.GetConfig()
 	service := _haService.NewHaService()
-	haController := _haController.NewHaController(service)
+	haController := _haController.NewHaController(service, config)
 	haController.InitRoutes()
-}
-
-func homePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to the HomePage!")
-	fmt.Println("Endpoint Hit: homePage")
 }
