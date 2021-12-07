@@ -66,10 +66,10 @@
 * In general, how would you separate technical decision to deploy something from business decision to release something?
     Answer
         First of all, we have to make sure that :
-            * the scope of the project is too big or too small (less impact)
+            * how is the scope of the project. Is it too big or too small (less impact)
             * business requirement is possible to be done or not
-            * impact of the business compared to the amount of effort from the tech division
-            - project prioritization if there are too many projects at the same timeline
+            * impact of the business compared to the amount of effort to develop it
+            * project prioritization if there are too many projects at the same timeline
         The most important thing is we should discuss with the business division, from their perspective, which task is more urgent and more important (Eisenhower Matrix). So we can decide from there like :
 
                             |           urgent              |           not urgent
@@ -77,4 +77,4 @@
             important       |     Number 1 priority         |       Number 3 Priority
             Not Important   |     Number 2 Priority         |     eliminate if possible
 
-        * (In my opinion, we prioritize the urgent one, rather than the important, because bussines division oftenly focus on time to market)
+            *(In my opinion, we prioritize the urgent one, rather than the important, because bussines division oftenly focus on delivering time to market product)
