@@ -41,6 +41,23 @@ func TestGetLocOkCase2(t *testing.T) {
 	}
 }
 
+func TestGetLocOkCase3(t *testing.T) {
+	haService := _haService.NewHaService()
+	result, _ := haService.GetLoc(
+		&_haModel.DNSRequest{
+			X:   "123.12",
+			Y:   "456.56",
+			Z:   "789.89",
+			Vel: "20.0",
+		},
+		float64(1),
+	)
+	expected := 1389.57
+	if result != expected {
+		t.Errorf("Expected : %+v, got : %+v", expected, result)
+	}
+}
+
 func TestGetLocZeroValue(t *testing.T) {
 	haService := _haService.NewHaService()
 	result, _ := haService.GetLoc(
@@ -58,6 +75,74 @@ func TestGetLocZeroValue(t *testing.T) {
 	}
 }
 
+func TestGetLocXZeroValue(t *testing.T) {
+	haService := _haService.NewHaService()
+	result, _ := haService.GetLoc(
+		&_haModel.DNSRequest{
+			X:   "0",
+			Y:   "1",
+			Z:   "2",
+			Vel: "3",
+		},
+		float64(1),
+	)
+	expected := 6.00
+	if result != expected {
+		t.Errorf("Expected : %+v, got : %+v", expected, result)
+	}
+}
+
+func TestGetLocYZeroValue(t *testing.T) {
+	haService := _haService.NewHaService()
+	result, _ := haService.GetLoc(
+		&_haModel.DNSRequest{
+			X:   "1",
+			Y:   "0",
+			Z:   "2",
+			Vel: "3",
+		},
+		float64(1),
+	)
+	expected := 6.00
+	if result != expected {
+		t.Errorf("Expected : %+v, got : %+v", expected, result)
+	}
+}
+
+func TestGetLocZZeroValue(t *testing.T) {
+	haService := _haService.NewHaService()
+	result, _ := haService.GetLoc(
+		&_haModel.DNSRequest{
+			X:   "1",
+			Y:   "2",
+			Z:   "0",
+			Vel: "3",
+		},
+		float64(1),
+	)
+	expected := 6.00
+	if result != expected {
+		t.Errorf("Expected : %+v, got : %+v", expected, result)
+	}
+}
+
+func TestGetLocVelZeroValue(t *testing.T) {
+	haService := _haService.NewHaService()
+	result, _ := haService.GetLoc(
+		&_haModel.DNSRequest{
+			X:   "1",
+			Y:   "2",
+			Z:   "3",
+			Vel: "0",
+		},
+		float64(1),
+	)
+	expected := 6.00
+	if result != expected {
+		t.Errorf("Expected : %+v, got : %+v", expected, result)
+	}
+}
+
 func TestGetLocEmptyValue(t *testing.T) {
 	haService := _haService.NewHaService()
 	result, _ := haService.GetLoc(
@@ -69,7 +154,7 @@ func TestGetLocEmptyValue(t *testing.T) {
 		},
 		float64(1),
 	)
-	expected := -1.00
+	expected := 0.00
 	if result != expected {
 		t.Errorf("Expected : %+v, got : %+v", expected, result)
 	}

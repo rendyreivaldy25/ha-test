@@ -1,0 +1,80 @@
+* What instrumentation this service would need to ensure its observability and operational transparency?
+    Answer : 
+        We can create log data for every request made. In this implementation, I have logged the parameter passed as an input and the response sent to the end user, so we would know what data sent from the end user to the backend, and what data give to the end user from the backend. And I also suggest to create the log data and the error message when the application is crash. This implementation will make our life easier if problem happened with our backend.
+
+* Why throttling is useful (if it is)? How would you implement it here?
+    Answer :
+        Throttling is useful to maintain performance of our server from burst API call from user, because if the end user call our service with hundred even thousand request per seconds, it will slow our backend down, even make our machine shut down. For the implementation in this project, I would suggest that we make a limiter for the API call, like 10 requests per second, or 1000 requests per minute per drone. 
+
+* What we have to change to make DNS be able to service several sectors at the same time?
+    Answer
+        I would suggest, We can make sector differentiation with location from the parameter JSON sent by the drone. We can make border from the location coordinates, in example :
+            * sectorId 1 is in :
+                # x -> 0.00 until x -> 999.99
+                # y -> 0.00 until y -> 999.99
+                # z -> 0.00 until z -> 999.99
+            * sectorId 2 is in :
+                # x -> 1000.00 until x -> 1999.99
+                # y -> 1000.00 until y -> 1999.99
+                # z -> 1000.00 until z -> 1999.99
+            * etc...
+        so when we get the location coordinate from the drone, we can then decide from which sector is the drone from. After we know from which sector, we can get the sectorId value from there as the multiplier.
+
+* Our CEO wants to establish B2B integration with Mom's Friendly Robot Company by allowing cargo ships of MomCorp to use DNS. The only issue is - MomCorp software expects loc value in location field, but math stays the same. How would you approach this? What’s would be your implementation strategy?
+    Answer :
+        In my opinion, we can add an identifier in JSON of the request API Call, in example, the request for the current API is :
+
+            {
+                "x":123.12,
+                "y":456.56, 
+                "z":789.89,
+                "vel":20.0
+            }
+
+        we can add one more property `identity`, so the JSON will be :
+
+            {
+                "x":123.12,
+                "y":456.56, 
+                "z":789.89,
+                "vel":20.0,
+                "identity": 1      
+            }
+
+        with `identity` value means :
+            * 1 -> our corp drone
+            * 2 -> MomCorp Cargo Ships
+
+        after we get the `identity` value, so we can make differentiation with the response back to the end user. if the `identity` is 1, then the response will be :
+
+            {
+                "loc" : "1235.45"
+            }
+
+        or if the `identity` value is 2, then the response will be :
+
+            {
+                "location": "1235.45"
+            }
+
+* Atlas Corp mathematicians made another breakthrough and now our navigation math is even better and more accurate, so we started producing a new drone model, based on new math. How would you enable scenario where DNS can serve both types of clients?
+    Answer
+        We have 2 options :
+            1. We can make a new API for the new drone
+            2. We can use the existing API and then we can make identifier in the JSON request (the implementation is the same like above questions), and then we can call the different math logic based on the identifier.
+
+* In general, how would you separate technical decision to deploy something from business decision to release something?
+    Answer
+        First of all, we have to make sure that :
+            * the scope of the project is too big or too small (less impact)
+            * business requirement is possible to be done or not
+            * impact of the business compared to the amount of effort from the tech division
+            - project prioritization if there are too many projects at the same timeline
+        The most important thing is we should discuss with the business division, from their perspective, which task is more urgent and more important (Eisenhower Matrix). So we can decide from there like :
+
+                            |           urgent              |           not urgent
+            ===============================================================================
+            important       |     Number 1 priority         |       Number 3 Priority
+            Not Important   |     Number 2 Priority         |     eliminate if possible
+
+        * (In my opinion, we prioritize the urgent one, rather than the important, because bussines division oftenly focus on time to market)
