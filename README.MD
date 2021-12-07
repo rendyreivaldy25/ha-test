@@ -18,7 +18,7 @@ DNS should be designed with following constraints in mind
     "vel": "20.0",
 }
 ```
-* Complex math needed to serve a response:
+* Complex math needed to serve a response:     
 ```loc = x*SectorID + y*SectorID + z*SectorID + vel```
 * DNS response example:
 ```javascript
@@ -27,31 +27,33 @@ DNS should be designed with following constraints in mind
 }
 ```
 # Project Structure
-For the structure of this project, I use clean code architecture which is separate tho project into several sections :
+For the structure of this project, I use clean code architecture which will separate the project into several sections :
 * Controller     
 This is acted as a gateway to our business logics
 * Service     
 Where business logics are located
 * Model     
 Where the data model, interfaces located     
+     
 Why I choose this architecture, because with this structure, it will make the project easier to create unit test to test the business logic and it will be much easier to scale up. 
 # Config Files
 In the configs folder, I created several config files. The contents of the files are the same, the difference is only the purpose of the configs. 
 * config.json     
 Config file for the current running app
-* config.json.dev
+* config.json.dev     
 Config file for development environment
-* config.json.prod
+* config.json.prod     
 Config file for production environment
-* config.json.sample
+* config.json.sample     
 Config file as a sample, if someone new start to contribute to this project     
+     
 With this method, we can make the config interchangeable in the CI/CD process. So, shifting environment from development to production will be seamless
-# How To Build And Run Via Docker
-```docker build -t ha-test .```
-```docker run -p 10000:10000 -it ha-test```
+# How To Build And Run Project Using Docker
+```$ docker build -t ha-test .```     
+```$ docker run -p 10000:10000 -it ha-test```
 # How To Run The Project
-```go run .```
+```$ go run .```
 # How To Run Unit Test
-```go test ./... -v```
+```$ go test ./... -v```
 # Questions 
 For the additional questions that needs written answer, I already created a file named `QUESTIONS.txt` located in the root of the project contains my answer.
