@@ -55,5 +55,7 @@ With this method, we can make the config interchangeable in the CI/CD process. S
 ```$ go run .```
 # How To Run Unit Test
 ```$ go test ./... -v```
+# Routes Available
+```/ (POST) -> get the location data```
 # Questions 
 For the additional questions that needs written answer, I already created a file named `QUESTIONS.txt` located in the root of the project contains my answer.
